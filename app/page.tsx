@@ -7,25 +7,48 @@ import type { SearchParams } from "nuqs";
 import { revalidateTag } from "next/cache";
 import ProductsPagination from "@/components/ui/products-pagination"
 import { off } from "process";
+import { Button } from '@/components/ui/button';
+import { signIn, signUp } from "@/server/users"
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import SignOut from './signout';
+
 
 type PageProps = {
   searchParams: Promise<SearchParams>
 }
 
 export default async function Home({searchParams}: PageProps) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  console.log('session: ', session)
   const { search, perPage, offset } = await loadSearchParams(searchParams)
   const transformedOffset = (offset - 1) * perPage;
   const products = await getProducts({search, perPage, offset: transformedOffset});
-  // const [isLoading, startTransition] = React.useTransition()
 
   async function refetchProducts() {
     "use server";
-    revalidateTag("products");
+    revalidateTag("products"); 
   }
+  // await authClient.signOut();
   // console.log('products: ', products)
   return (
     <main className="flex flex-col gap-10 justify-center max-w-6xl mx-auto">
-      <h1>Online products</h1>
+      <div>
+        <h1>Online products</h1>
+        { !session ?  <div>
+          <Button variant="outline" className="mb-4" onClick={signIn}>Sign In</Button>
+          <Button variant="outline" className="mb-4" onClick={signUp}>Sign Up</Button>
+          
+      </div> : <div> {session ? (
+        <div> 
+          <p className="mb-4">Welcome {session.user.name}</p>
+          <SignOut />
+        </div>
+        ): 'sign in'} </div>}
+      </div>
+      
       {/* <Suspense fallback={<p>Loading product...</p>}> startTransition={startTransition}  */}
         <ProductFilter refetchProducts={refetchProducts}  /> 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
