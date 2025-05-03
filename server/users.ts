@@ -3,21 +3,27 @@
 import { auth } from "@/lib/auth"; // path to your auth file
 import { authClient } from "@/lib/auth-client";
 
-export const signIn = async () => {
+interface UserProps {
+  email: string;
+  password: string;
+  username?: string;
+}
+
+export const signIn = async (userSignIn: UserProps) => {
   await auth.api.signInEmail({
     body: {
-      email: "c1@gmail.com",
-      password: "pass1234",
+      email: userSignIn.email,
+      password: userSignIn.password,
     }
   })
 }
 
-export const signUp = async () => {
+export const signUp = async (userProps: UserProps) => {
   await auth.api.signUpEmail({
     body: {
-      email: "c1@gmail.com",
-      password: "pass1234",
-      name: "Customer 1",
+      email: userProps.email,
+      password: userProps.password,
+      name: userProps.username || userProps.email,
     }
   })  
 }
