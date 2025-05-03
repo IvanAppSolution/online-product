@@ -39,7 +39,7 @@ export async function sendEmail({
     };
 
   } catch (error) {
-    console.error("Error sending email:", error?.response?.body);
+    console.error("Error sending email:", error);
     return {
       success: false,
       message: "Failed to send email. Please try again later.",

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 
 
-export default async function SignOut() {
+export default function SignOut() {
   
   const handleSignOut = async () => {
     await authClient.signOut();

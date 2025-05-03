@@ -1,5 +1,4 @@
-import type { Control, FieldPath } from "react-hook-form";
-import { z } from "zod";
+import type { Control } from "react-hook-form";
 import {
   FormControl,
   FormDescription,
@@ -9,20 +8,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-const formSchema = z.object({
-  email: z.string().email(),
-  username: z.string().min(1),
-  password: z.string().min(8),
-});
-
+import { z } from "zod";
 export interface InputFormFieldProps {
   name: string;
   label: string;
   placeholder: string;
   description?: string;
   inputType?: string;
-  formControl: Control<z.infer<any>>; //any;
+  formControl: Control<z.infer<Zod.ZodTypeAny>>;
 }
 
 export const InputFormField: React.FC<InputFormFieldProps> = ({

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +11,7 @@ import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import LoadingButton from "@/components/loading-button";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -45,12 +45,12 @@ export default function SignUp() {
 					setPending(true);
 				},
 				onSuccess: () => {
-					// toast({
-					// 	title: "Account created",
-					// 	description:
-					// 		"Your account has been created. Check your email for a verification link.",
-					// });
-          router.push("/");
+					toast({
+						title: "Account created"						
+					});
+          setTimeout(function() {
+            router.push("/");
+          }, 3000);          
 				},
 				onError: (ctx) => {
 					console.log("error", ctx);
@@ -97,7 +97,7 @@ export default function SignUp() {
                 inputType="password"
                 formControl={form.control}
               />
-              <Button type="submit">Sign in</Button>
+              <LoadingButton pending={pending}>Sign up</LoadingButton>
             </form>
           </Form>
         </CardContent>
