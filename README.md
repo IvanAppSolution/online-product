@@ -9,3 +9,5 @@ nuqs
 First, run the development server:
 pnpm dev
 
+Preview:
+![Image](https://github.com/user-attachments/assets/596db095-655d-4fee-91da-bc13f39c397b)
