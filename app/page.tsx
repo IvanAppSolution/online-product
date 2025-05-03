@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ProductCard from "@/components/ui/product-card";
 import ProductFilter from "@/components/ui/products-filter";
 import { getProducts } from "@/server/products";
