@@ -1,5 +1,5 @@
 "use client";
-import { parseAsInteger, useQueryState, parseAsString, ParserBuilder  } from "nuqs";
+import { parseAsInteger, useQueryState, parseAsString } from "nuqs";
 import React, { useState, useEffect } from 'react';
 import { Input } from "./input";
 import {
@@ -12,7 +12,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "./button";
-import loading from "/images/loading.gif";
 import Image from "next/image";
 
 interface ProductsFilterProps {
@@ -26,7 +25,7 @@ export default function ProductsFilter({
   const [timeoutId, setTimeoutId] = useState('');
   const [isLoading, startTransition] = React.useTransition()
 
-  const [query, setSearch] = useQueryState(
+  const [search, setSearch] = useQueryState(
     'search',
     parseAsString.withDefault("").withOptions({ startTransition, shallow: false, clearOnDefault: true })
   );
@@ -46,7 +45,6 @@ export default function ProductsFilter({
     clearTimeout(timeoutId);
 
     const newTimeoutId = setTimeout(() => {
-      // console.log('value: ', value);
       setSearch(value);
       if (value === "") {
         setPerPage(10);
@@ -58,7 +56,8 @@ export default function ProductsFilter({
     }, 600);
 
     setTimeoutId(String(newTimeoutId));
-
+    console.log("search", search);
+    console.log("offset", offset);
   };
 
   const handlePerPageChange = (value: string) => {
@@ -71,8 +70,6 @@ export default function ProductsFilter({
   useEffect(() => {
     return () => clearTimeout(timeoutId);
   }, [timeoutId]);
-
-  // if (isLoading) return <div></div>
 
   return (
     <div className="flex justify-between gap-3">
@@ -100,7 +97,6 @@ export default function ProductsFilter({
               <SelectItem value="10">10</SelectItem>
               <SelectItem value="20">20</SelectItem>
               <SelectItem value="30">30</SelectItem>
-              <SelectItem value="2">2</SelectItem>
             </SelectGroup>  
           </SelectContent>
         </Select>

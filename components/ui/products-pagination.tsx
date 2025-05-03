@@ -2,15 +2,11 @@
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination"
 import { useQueryState, parseAsInteger } from "nuqs";
 import { Button } from "./button";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ProductsPaginationProps {
   refetchProducts: () => Promise<void>;
@@ -44,7 +40,6 @@ export default function ProductsPagination({
               >
                 <ChevronLeft className="size-4" >Previous</ChevronLeft>
               </Button>
-              {/* <PaginationPrevious href="#" /> */}
             </PaginationItem>
             <PaginationItem>
               <Button
@@ -65,9 +60,6 @@ export default function ProductsPagination({
             {offset}
           </Button>          
         </PaginationItem>
-        {/* <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem> */}
         {offset <= 1 && (
           <>
             <PaginationItem>
@@ -77,8 +69,6 @@ export default function ProductsPagination({
             >
               {offset + 1}
             </Button>
-            
-            {/* <PaginationNext href="#" /> */}
           </PaginationItem>
           <PaginationItem>
             <Button
