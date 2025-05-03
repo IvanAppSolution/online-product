@@ -19,7 +19,7 @@ export default async function authMiddleware(request: NextRequest) {
     if (isAuthRoute || isPasswordRoute) {
       return NextResponse.next();
     }
-    return NextResponse.redirect(new URL("/sign-in", request.url));
+    // return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
   if (isAuthRoute || isPasswordRoute) {
@@ -48,18 +48,3 @@ export default async function authMiddleware(request: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 };
-
-// import { getSessionCookie } from "better-auth/cookies";
-// import { NextRequest, NextResponse } from "next/server";
-
-// export async function middleware(request: NextRequest) {
-//     const sessionCookie = getSessionCookie(request); // Optionally pass config as the second argument if cookie name or prefix is customized.
-//     if (!sessionCookie) {
-//         return NextResponse.redirect(new URL("/", request.url));
-//     }
-//     return NextResponse.next();
-// }
-
-// export const config = {
-//     matcher: ["/dashboard"],
-// };

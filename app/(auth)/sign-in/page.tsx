@@ -27,8 +27,8 @@ export default function Signin() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "c1@gmail.com",
-      password: "pass1234",
+      email: "",
+      password: "",
     },
   });
 
@@ -109,6 +109,16 @@ export default function Signin() {
             <Link href="/sign-up" className="underline underline-offset-4">
               Sign up
             </Link>
+          </p>
+          <p className="text-sm text-neutral-500">
+            <br />
+            <span className="underline">Test user credentials:</span> <br />
+            <strong>Email: </strong>c1@gmail.com<br />
+            <strong>Password: </strong>password12345
+            <br /><br />
+            <span className="underline">Test admin credentials:</span> <br />
+            <strong>Email: </strong>admin@gmail.com<br />
+            <strong>Password: </strong>password12345
           </p>
         </CardContent>
 			</Card>
