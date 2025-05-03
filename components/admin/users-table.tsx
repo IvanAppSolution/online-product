@@ -7,7 +7,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-// import type { User } from "@/lib/auth";
 import type { User } from "@/db/schema"; // Adjust the import based on your actual schema file location
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client"; 
@@ -25,7 +24,7 @@ export default function UsersTable() {
 				const response = await authClient?.admin.listUsers({
 					query: { limit: 10 },
 				});
-				console.log("Response:", response);
+
 				if (response?.data) {
 					setUsers(response.data.users as User[]);
 				}
@@ -67,7 +66,6 @@ export default function UsersTable() {
 					<TableHead>Verified</TableHead>
 					<TableHead>Status</TableHead>
 					<TableHead>Joined</TableHead>
-					<TableHead>Actions</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>

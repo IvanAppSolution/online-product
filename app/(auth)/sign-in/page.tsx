@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +16,6 @@ import LoadingButton from "@/components/loading-button";
 
 const formSchema = z.object({
   email: z.string().email(),
-  // username: z.string().min(0),
   password: z.string().min(8),
 });
 

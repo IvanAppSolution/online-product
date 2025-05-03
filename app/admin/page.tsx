@@ -8,7 +8,7 @@ export default async function AdminDashboard() {
 				<div className="flex flex-col gap-2 mb-8">
 					<h1 className="text-3xl font-bold">Admin Dashboard</h1>
 					<p className="text-muted-foreground">
-						Manage users and view system statistics
+						Manage users
 					</p>
 				</div>
 

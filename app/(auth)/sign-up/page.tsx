@@ -33,18 +33,6 @@ export default function SignUp() {
     },
   });
 
-  // const onSubmit = (values: z.infer<typeof formSchema>) => {
-  //   console.log(values);
-  //   signUp({email: values.email, password: values.password})
-  //     .then((res) => {
-  //       console.log("res: ", res);
-  //     })
-  //     .catch((err) => {
-  //       console.log("err: ", err);
-  //     } );  
-
-  // };
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		await authClient.signUp.email(
 			{
