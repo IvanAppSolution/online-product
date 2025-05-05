@@ -21,7 +21,7 @@ export default function Header() {
     <header className="flex max-w-6xl mx-auto mb-2"> 
       <div className="flex justify-between w-full">
         <Image src={isDark ? "/images/logo-dark.png" : "/images/logo.png"} alt="Logo" onClick={() => router.push("/")} width={100} height={100} className="h-16 w-16 cursor-pointer" />
-          <div className="flex gap-2 items-center w-48 justify-end">
+          <div className="flex gap-2 items-center w-60 justify-end">
             {!isPending && !user ? (
               <Link href="/sign-in" className="btn btn-primary"><Button variant="outline">Sign In</Button></Link>          
             ) : (

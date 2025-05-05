@@ -114,11 +114,11 @@ export default function Signin() {
             <br />
             <span className="underline">Test user credentials:</span> <br />
             <strong>Email: </strong>c1@gmail.com<br />
-            <strong>Password: </strong>password12345
+            <strong>Password: </strong>pass12345
             <br /><br />
             <span className="underline">Test admin credentials:</span> <br />
             <strong>Email: </strong>admin@gmail.com<br />
-            <strong>Password: </strong>password12345
+            <strong>Password: </strong>pass12345
           </p>
         </CardContent>
 			</Card>
